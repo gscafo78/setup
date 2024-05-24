@@ -49,9 +49,13 @@ fi
 
 # Remove any existing Docker-related packages (for apt systems)
 if [ "$package_manager" == "apt" ]; then
-    for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do
-        apt remove -y $pkg
-    done
+    apt remove -y docker.io \
+                  docker-doc \
+                  docker-compose \
+                  docker-compose-v2 \
+                  podman-docker \
+                  containerd \
+                  runc
 
     # Add Docker's official GPG key and setup the repository for apt systems
     apt update
@@ -67,7 +71,11 @@ if [ "$package_manager" == "apt" ]; then
       tee /etc/apt/sources.list.d/docker.list > /dev/null
 
     apt update
-    apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    apt install -y docker-ce \
+                   docker-ce-cli \
+                   containerd.io \
+                   docker-buildx-plugin \
+                   docker-compose-plugin
 fi
 
 # Install Docker on CentOS/RHEL/Fedora
@@ -83,7 +91,11 @@ if [ "$package_manager" == "yum" ]; then
 
     yum install -y yum-utils
     yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-    yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    yum install -y docker-ce \
+                   docker-ce-cli \
+                   containerd.io \
+                   docker-buildx-plugin \
+                   docker-compose-plugin
 
     systemctl start docker
     systemctl enable docker
