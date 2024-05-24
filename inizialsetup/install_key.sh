@@ -67,4 +67,4 @@ fi
  chmod 600 /root/.ssh/authorized_keys
 
 # Download the file, visualize, and append its contents to authorized_keys
-curl -fsSL https://raw.githubusercontent.com/gscafo78/Dockers/main/id_ed25519.pub?token=GHSAT0AAAAAACSJ5YWXJXVZ2GJIGYU2AD4QZSHDW4Q |  tee -a /root/.ssh/authorized_keys
+curl -fsSL https://raw.githubusercontent.com/gscafo78/setup/inizialsetup/main/id_ed25519.pub |  tee -a /root/.ssh/authorized_keys

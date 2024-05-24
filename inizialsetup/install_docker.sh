@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# curl -fsSL https://raw.githubusercontent.com/gscafo78/Dockers/main/install_docker.sh?token=GHSAT0AAAAAACSJ5YWXHAUEVCZD7JLP7TFAZSHCLVA | bash
-
-
 # Check if /etc/os-release exists
 if [ -f /etc/os-release ]; then
     # Source the file to get the OS details
