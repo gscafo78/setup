@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# curl -fsSL https://raw.githubusercontent.com/gscafo78/setup/main/inizialsetup/install_docker.sh | bash
+
 # Check if /etc/os-release exists
 if [ -f /etc/os-release ]; then
     # Source the file to get the OS details
@@ -52,7 +54,6 @@ if [ "$package_manager" == "apt" ]; then
     apt remove -y docker.io \
                   docker-doc \
                   docker-compose \
-                  docker-compose-v2 \
                   podman-docker \
                   containerd \
                   runc
