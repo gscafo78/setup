@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# curl -fsSL https://raw.githubusercontent.com/gscafo78/setup/main/inizialsetup/install_key.sh |  bash
+
 # Check if /etc/os-release exists
 if [ -f /etc/os-release ]; then
     # Source the file to get the OS details
@@ -67,4 +69,4 @@ fi
  chmod 600 /root/.ssh/authorized_keys
 
 # Download the file, visualize, and append its contents to authorized_keys
-curl -fsSL https://raw.githubusercontent.com/gscafo78/setup/inizialsetup/main/id_ed25519.pub |  tee -a /root/.ssh/authorized_keys
+curl -fsSL https://raw.githubusercontent.com/gscafo78/setup/main/inizialsetup/id_ed25519.pub |  tee -a /root/.ssh/authorized_keys
