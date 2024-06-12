@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# wget -qO- https://raw.githubusercontent.com/gscafo78/setup/main/inizialsetup/install_docker.sh | bash
 # curl -fsSL https://raw.githubusercontent.com/gscafo78/setup/main/inizialsetup/install_docker.sh | bash
 
 # Check if /etc/os-release exists
