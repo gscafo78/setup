@@ -74,15 +74,16 @@ initial_setup() {
   tee /etc/update-motd.d/01-custom >/dev/null <<'EOF'
 #!/bin/sh
 echo "GENERAL SYSTEM INFORMATION\n"
-/usr/bin/figlet $(hostname) 2>/dev/null || /usr/bin/neofetch
+/usr/bin/figlet $(hostname) 2>/dev/null 
+/usr/bin/fastfetch
 echo
 echo
 echo " ******************************************************************"
-echo " _WARNING: Unauthorized access to this system is prohibited._     "
-echo " _All activities on this system are logged._                      "
-echo " _By accessing this system, you consent to monitoring._           "
-echo " _Unauthorized access will be prosecuted to the fullest extent_   "
-echo " _of the law._                                                    "
+echo " * WARNING: Unauthorized access to this system is prohibited.     *"
+echo " * All activities on this system are logged.                      *"
+echo " * By accessing this system, you consent to monitoring.           *"
+echo " * Unauthorized access will be prosecuted to the fullest extent   *"
+echo " * of the law.                                                    *"
 echo " ******************************************************************"
 echo
 EOF
@@ -213,6 +214,9 @@ EOF
     chown "$USER_1000":"$USER_1000" "$TARGET/.bashrc" "$TARGET/.bash_aliases" || true
   done
 
+  passwd -l root
+  echo "🔒 Password di root disabilitata (account bloccato)."
+
   echo
   echo "✅ Initial setup completed successfully!"
   echo
@@ -230,7 +234,7 @@ install_docker() {
   if [[ -f /etc/os-release ]]; then
     . /etc/os-release
     OS=$ID
-    IDL=$ID_LIKE
+    IDL=${ID_LIKE:-""}
   else
     echo "❌ /etc/os-release not found, cannot determine OS."
     exit 1
@@ -291,7 +295,7 @@ options=(
   "🐳 Only Docker"
   "🚪 Exit"
 )
-select choice in "${options[@]}"; do
+select choice in "${options[@]}" < /dev/tty; do
   case $REPLY in
     1)
       initial_setup
