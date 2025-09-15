@@ -1,6 +1,5 @@
-# wget -qO- https://raw.githubusercontent.com/gscafo78/setup/main/inizialsetup/setup.sh | bash
-# curl -fsSL https://raw.githubusercontent.com/gscafo78/setup/main/inizialsetup/setup.sh | bash
-
+# wget -qO- https://raw.githubusercontent.com/gscafo78/setup/main/inizialsetup/setup.sh
+# bash setup.sh
 
 #!/usr/bin/env bash
 set -euo pipefail
@@ -295,7 +294,7 @@ options=(
   "🐳 Only Docker"
   "🚪 Exit"
 )
-select choice in "${options[@]}" < /dev/tty; do
+select choice in "${options[@]}"; do
   case $REPLY in
     1)
       initial_setup
